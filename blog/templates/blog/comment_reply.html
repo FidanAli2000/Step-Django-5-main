@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Cavab yaz
+{% endblock title %}
+    
+
+{% block content %}
+    <h2>Cavab yaz</h2>
+
+    <div class="comment">
+        <p class="meta"><b>{{ parent_comment.name }}</b> · {{ parent_comment.created_at|date:"d.m.Y H:i" }}</p>
+        <p>{{ parent_comment.text }}</p>
+    </div>
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Göndər</button>
+        <a href="{{ parent.post.get_absolute_url }}" class="btn">Ləğv et</a>
+    </form>
+{% endblock content %}
+    

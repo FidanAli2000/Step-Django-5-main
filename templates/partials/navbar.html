@@ -1,0 +1,29 @@
+{# [EV 8] tapşırıq 6 — navbar base.html-dən bura köçürüldü, orada {% include %} ilə qoşulur #}
+{# [EV 8] tapşırıq 7 — hansı səhifədəyiksə, o link "active" olur #}
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="{% url 'blog:post_list' %}">STEP<span>Blog</span></a>
+    <nav>
+      <a href="{% url 'blog:post_list' %}"
+         {% if request.path == "/" %}class="active"{% endif %}>Postlar</a>
+
+      <a href="{% url 'blog:post_create' %}"
+         {% if request.path == '/post/new/' %}class="active"{% endif %}>+ Yeni post</a>
+
+      {# [PRAKTİKA 8] #}
+      <a href="{% url 'blog:category_list' %}"
+         {% if request.path == "/categories/" %}class="active"{% endif %}>Kateqoriyalar</a>
+
+      {# [EV 10] tapşırıq 2 #}
+      <a href="{% url 'blog:tag_list' %}"
+         {% if request.path == "/tags/" %}class="active"{% endif %}>Teqlər</a>
+
+      <a href="{% url 'blog:about' %}"
+         {% if request.path == "/about/" %}class="active"{% endif %}>Haqqımızda</a>
+
+      {# [EV 8] #}
+      <a href="{% url 'blog:contact' %}"
+         {% if request.path == "/contact/" %}class="active"{% endif %}>Əlaqə</a>
+    </nav>
+  </div>
+</header>
